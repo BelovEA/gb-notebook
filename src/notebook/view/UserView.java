@@ -17,7 +17,7 @@ public class UserView {
         Commands com;
 
         while (true) {
-            String command = prompt("Введите команду: ");
+            String command = prompt("Введите команду: ").toUpperCase();
             com = Commands.valueOf(command);
             if (com == Commands.EXIT) return;
             switch (com) {
@@ -34,6 +34,9 @@ public class UserView {
                     } catch (Exception e) {
                         throw new RuntimeException(e);
                     }
+                    break;
+                case READALL:
+                    System.out.println(userController.readAll());
                     break;
                 case UPDATE:
                     String userId = prompt("Enter user id: ");
